@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class TestModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long Id;
+    private long Id;
 
     @Column(columnDefinition = "VARCHAR(255)", nullable = false)
     private String title;
