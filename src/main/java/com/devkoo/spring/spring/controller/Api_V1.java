@@ -11,7 +11,7 @@ public class Api_V1 {
 
 
     @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
-    public @ResponseBody String set() {
+    public @ResponseBody String main() {
         return "good page";
     }
 
