@@ -22,6 +22,4 @@ public class Api_V1 {
         result.put("message", "안녕하십니까~");
         return result;
     }
-
-    // 유저가 해당 온도에 대해 추웠는지, 더웠는지를 분석해서 추천 팁을 같이 반환하면 좋을 것 같다.
 }
