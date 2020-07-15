@@ -8,8 +8,6 @@ import java.util.*;
 @AllArgsConstructor
 @RequestMapping("api/v1")
 public class Api_V1 {
-
-
     @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
     public @ResponseBody String main() {
         return "good page";
