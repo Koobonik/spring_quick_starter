@@ -10,7 +10,7 @@ import java.util.*;
 public class Api_V1 {
     @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
     public @ResponseBody String main() {
-        return "good page";
+        return "good";
     }
 
     // 리액트 테스트용 코드
