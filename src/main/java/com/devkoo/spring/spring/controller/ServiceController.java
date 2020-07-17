@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @AllArgsConstructor
 @RequestMapping("service/v1")
-public class ServiceContoroller {
+public class ServiceController {
 
 
 }
