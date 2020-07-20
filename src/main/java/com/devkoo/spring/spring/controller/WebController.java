@@ -15,6 +15,6 @@ public class WebController {
     }
     @RequestMapping(value = "test", method = {RequestMethod.GET, RequestMethod.POST})
     public @ResponseBody String test()  {
-        return "good page123";
+        return "good page";
     }
 }
