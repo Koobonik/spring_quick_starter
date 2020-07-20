@@ -15,6 +15,6 @@ public class TestModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long Id;
 
-    @Column(columnDefinition = "VARCHAR(255)", nullable = false)
+    @Column(columnDefinition = "VARCHAR(50)", nullable = false)
     private String title;
 }
