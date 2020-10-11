@@ -1,4 +1,4 @@
-package com.devkoo.spring.spring;
+package com.spring;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -8,6 +8,7 @@ class ApplicationTests {
 
     @Test
     void contextLoads() {
+        System.out.println("asdasd");
     }
 
 }

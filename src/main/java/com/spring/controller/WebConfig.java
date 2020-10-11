@@ -1,4 +1,4 @@
-package com.devkoo.spring.spring.controller;
+package com.spring.controller;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

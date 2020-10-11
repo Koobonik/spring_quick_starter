@@ -1,4 +1,4 @@
-package com.devkoo.spring.spring.service;
+package com.spring.service;
 
 
 import formatter.Encoder;

@@ -1,4 +1,4 @@
-package com.devkoo.spring.spring.service;
+package com.spring.service;
 
 public class UsersService {
 //    private UsersRepository userRepository;

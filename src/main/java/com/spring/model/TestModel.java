@@ -1,4 +1,4 @@
-package com.devkoo.spring.spring.model;
+package com.spring.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

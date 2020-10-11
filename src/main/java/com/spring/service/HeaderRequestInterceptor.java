@@ -1,4 +1,4 @@
-package com.devkoo.spring.spring.service;
+package com.spring.service;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.client.ClientHttpRequestExecution;
 import org.springframework.http.client.ClientHttpRequestInterceptor;

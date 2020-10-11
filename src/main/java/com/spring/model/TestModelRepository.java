@@ -1,4 +1,4 @@
-package com.devkoo.spring.spring.model;
+package com.spring.model;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
