@@ -1,4 +1,4 @@
-package com.spring.service;
+package com.spring.service.push;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.client.ClientHttpRequestExecution;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
