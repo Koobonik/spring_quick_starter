@@ -66,12 +66,13 @@ public class Api_V1 {
             log.info("토큰 유효함");
             // 유저 정보 추출 (아이디)
             log.info(jwtTokenProvider.getUserPk(jwt));
+            return "true";
             // 인증 정보 조회
-            log.info(jwtTokenProvider.getAuthentication(jwt).getAuthorities()); // ex ROLE_USER
-            log.info(jwtTokenProvider.getAuthentication(jwt).getCredentials());
-            log.info(jwtTokenProvider.getAuthentication(jwt).getDetails());
-            log.info(((ExampleUser) jwtTokenProvider.getAuthentication(jwt).getPrincipal()).getPassword()); // 유저 클래스를 가져와준다!
-            log.info(jwtTokenProvider.getAuthentication(jwt).getName());
+//            log.info(jwtTokenProvider.getAuthentication(jwt).getAuthorities()); // ex ROLE_USER
+//            log.info(jwtTokenProvider.getAuthentication(jwt).getCredentials());
+//            log.info(jwtTokenProvider.getAuthentication(jwt).getDetails());
+//            log.info(((ExampleUser) jwtTokenProvider.getAuthentication(jwt).getPrincipal()).getPassword()); // 유저 클래스를 가져와준다!
+//            log.info(jwtTokenProvider.getAuthentication(jwt).getName());
         }
         return "hi";
     }
