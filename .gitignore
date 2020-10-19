@@ -21,6 +21,7 @@ build/
 *.ipr
 out/
 *.yml
+*.pem
 
 ### NetBeans ###
 /nbproject/private/

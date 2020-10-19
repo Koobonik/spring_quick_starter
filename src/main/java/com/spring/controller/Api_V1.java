@@ -52,27 +52,26 @@ public class Api_V1 {
         exampleUser.setRoles(Collections.singletonList("ROLE_USER"));
         if(loginRequestDto.getUserLoginId().equals("test_login_id") && loginRequestDto.getUserPassword().equals("test_login_password")){
             log.info((PrivateKey) httpSession.getAttribute("privateKey"));
-            return jwtTokenProvider.createToken(exampleUser.getUserLoginId(), exampleUser.getRoles(), (PrivateKey) httpSession.getAttribute("privateKey"));
+            return jwtTokenProvider.createToken(exampleUser.getUserLoginId(), exampleUser.getRoles());
         }
         return loginRequestDto.getUserLoginId() + " : " + loginRequestDto.getUserPassword();
     }
 
     @PostMapping("jwtValidation")
-    public String jwtValidation(@RequestBody Map<String, Object> map, HttpServletRequest httpServletRequest, HttpSession httpSession){
+    public String jwtValidation(@RequestHeader @RequestParam String jwt){
         // 헤더에서 토큰값 추출
-        log.info(jwtTokenProvider.resolveToken(httpServletRequest));
-        String token = jwtTokenProvider.resolveToken(httpServletRequest);
+        log.info(jwt);
         // 토큰값이 유효한 경우
-        if(jwtTokenProvider.validateToken(token, (PrivateKey) httpSession.getAttribute("privateKey"))) {
+        if(jwtTokenProvider.validateToken(jwt)) {
             log.info("토큰 유효함");
-            // 유저 정보 추출 (이메일)
-            log.info(jwtTokenProvider.getUserPk(token));
+            // 유저 정보 추출 (아이디)
+            log.info(jwtTokenProvider.getUserPk(jwt));
             // 인증 정보 조회
-            log.info(jwtTokenProvider.getAuthentication(token).getAuthorities()); // ex ROLE_USER
-            log.info(jwtTokenProvider.getAuthentication(token).getCredentials());
-            log.info(jwtTokenProvider.getAuthentication(token).getDetails());
-            log.info(((ExampleUser) jwtTokenProvider.getAuthentication(token).getPrincipal()).getPassword()); // 유저 클래스를 가져와준다!
-            log.info(jwtTokenProvider.getAuthentication(token).getName());
+            log.info(jwtTokenProvider.getAuthentication(jwt).getAuthorities()); // ex ROLE_USER
+            log.info(jwtTokenProvider.getAuthentication(jwt).getCredentials());
+            log.info(jwtTokenProvider.getAuthentication(jwt).getDetails());
+            log.info(((ExampleUser) jwtTokenProvider.getAuthentication(jwt).getPrincipal()).getPassword()); // 유저 클래스를 가져와준다!
+            log.info(jwtTokenProvider.getAuthentication(jwt).getName());
         }
         return "hi";
     }
