@@ -24,7 +24,7 @@ class ApplicationTests {
 
     @Test
     void sendSms() throws JsonProcessingException, ParseException, UnsupportedEncodingException, URISyntaxException, NoSuchAlgorithmException, InvalidKeyException {
-        smsService.sendSms("01072979829","오예");
+        smsService.sendSms("01011112222","오예");
     }
 
 }
