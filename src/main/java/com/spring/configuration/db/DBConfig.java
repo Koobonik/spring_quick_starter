@@ -68,7 +68,7 @@ public class DBConfig {
                 .dataSource(mysqlDataSource())
                 .properties(properties)
                 //.packages(TestModel.class)
-                .packages("com.devkoo.spring.spring.donda.model")
+                .packages("com.spring.model")
                 .persistenceUnit("userPU")
                 .build();
     }
