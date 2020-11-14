@@ -15,5 +15,4 @@ public class SendSmsResponseDto {
     private String statusName;
     private String requestId;
     private Timestamp requestTime;
-
 }
