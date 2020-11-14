@@ -62,7 +62,7 @@ public class DBConfig {
         // yml이나 properties에서도 써줄 수 있지만 여러 디비를 관리하다보면 밑에와같이 쓸 수 있습니다.
         // properties.put("hibernate.hbm2ddl.auto", "update");
         // properties.put("hibernate.hbm2ddl.auto", "none");
-        properties.put("hibernate.hbm2ddl.auto", "create");
+        properties.put("hibernate.hbm2ddl.auto", "update");
         properties.put("show-sql", "true");
         return builder
                 .dataSource(mysqlDataSource())
