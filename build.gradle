@@ -45,6 +45,9 @@ dependencies {
     // Spring security 추가
     implementation 'org.springframework.boot:spring-boot-starter-security'
     testImplementation 'org.springframework.security:spring-security-test'
+
+    // redis
+    compile('org.springframework.boot:spring-boot-starter-data-redis')
 }
 
 test {

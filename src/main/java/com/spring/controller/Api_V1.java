@@ -1,16 +1,16 @@
 package com.spring.controller;
 
+import com.spring.dto.requestDto.JwtRequestDto;
 import com.spring.dto.requestDto.LoginRequestDto;
 import com.spring.dto.responseDto.PublicKeyResponseDto;
 import com.spring.model.ExampleUser;
+import com.spring.service.ExampleUsersService;
 import com.spring.util.jwt.JwtTokenProvider;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,9 +24,12 @@ import java.util.Map;
 @Log4j2
 @RestController
 @RequiredArgsConstructor
+@Api(value = "API", tags = "유저 정보")
 @RequestMapping("api/v1")
 public class Api_V1 {
 
+    private final JwtTokenProvider jwtTokenProvider;
+    private final ExampleUsersService exampleUsersService;
     @ApiOperation(value = "HTTP GET EXAMPLE", notes = "GET 요청에 대한 예제 입니다.")
     @ApiResponses({
             @ApiResponse(code = 200, message = "성공"),
@@ -39,8 +42,6 @@ public class Api_V1 {
         return test1 + " : " + test2;
     }
 
-
-    private final JwtTokenProvider jwtTokenProvider;
     @ApiOperation(value = "로그인", notes = "로그인에 대한 요청을 보냅니다.")
     @PostMapping(value = "login")
     public String login(@RequestBody LoginRequestDto loginRequestDto, HttpSession httpSession){
@@ -105,4 +106,14 @@ public class Api_V1 {
         log.info(publicKeyResponseDto);
         return publicKeyResponseDto;
     }
+
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "정상적으로 로그아웃", response = String.class)
+    })
+    @ApiOperation(value = "로그아웃 api", notes = "헤더에 jwt, refreshJwt를 넣어서 보내주세요.")
+    @PostMapping("/logout")
+    public ResponseEntity<?> logout(@RequestBody String jwt){
+        return exampleUsersService.logout(jwt);
+    }
+
 }

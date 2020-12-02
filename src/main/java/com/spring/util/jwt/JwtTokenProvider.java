@@ -6,6 +6,9 @@ import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,6 +26,7 @@ import java.util.*;
 
 @RequiredArgsConstructor
 @Component
+@Log4j2
 public class JwtTokenProvider {
 
     private PrivateKey tokenKey;
@@ -31,6 +35,7 @@ public class JwtTokenProvider {
     private final long tokenValidTime = 60 * 30  * 1000L;
 
     private final UserDetailsService userDetailsService;
+    private final StringRedisTemplate redisTemplate;
 
     // 객체 초기화, secretKey를 Base64로 인코딩한다.
     @PostConstruct
@@ -87,6 +92,11 @@ public class JwtTokenProvider {
     public boolean validateToken(String jwtToken) {
         try {
             Jws<Claims> claims = Jwts.parser().setSigningKey(tokenKey).parseClaimsJws(jwtToken);
+            ValueOperations<String, String> logoutValueOperations = redisTemplate.opsForValue();
+            if(logoutValueOperations.get(jwtToken) != null){
+                log.info("로그아웃된 토큰 입니다.");
+                return false;
+            }
             return !claims.getBody().getExpiration().before(new Date());
         } catch (Exception e) {
             return false;
