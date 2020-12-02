@@ -53,6 +53,7 @@ public class Api_V1 {
         exampleUser.setRoles(Collections.singletonList("ROLE_USER"));
         if(loginRequestDto.getUserLoginId().equals("test_login_id") && loginRequestDto.getUserPassword().equals("test_login_password")){
             log.info((PrivateKey) httpSession.getAttribute("privateKey"));
+            exampleUsersService.save(exampleUser);
             return jwtTokenProvider.createToken(exampleUser.getUserLoginId(), exampleUser.getRoles());
         }
         return loginRequestDto.getUserLoginId() + " : " + loginRequestDto.getUserPassword();
@@ -112,7 +113,7 @@ public class Api_V1 {
     })
     @ApiOperation(value = "로그아웃 api", notes = "헤더에 jwt, refreshJwt를 넣어서 보내주세요.")
     @PostMapping("/logout")
-    public ResponseEntity<?> logout(@RequestBody String jwt){
+    public ResponseEntity<?> logout(@RequestHeader @RequestParam String jwt){
         return exampleUsersService.logout(jwt);
     }
 
